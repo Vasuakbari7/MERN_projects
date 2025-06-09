@@ -3,6 +3,7 @@ import bcrypt from "bcrypt";
 import { v2 as cloudinary } from "cloudinary";
 import doctormodel from "../models/doctorModel.js";
 import jwt from "jsonwebtoken";
+import doctorModel from "../models/doctorModel.js";
 const ADMIN_EMAIL = "admin@prescripto.com";
 const ADMIN_PASSWORD = "admin1234";
 const JWT_SECRET = "lolipop";
@@ -93,13 +94,13 @@ const loginAdmin = async (req, res) => {
     if (email === ADMIN_EMAIL && password === ADMIN_PASSWORD) {
       const token = jwt.sign(email + password, JWT_SECRET);
 
-      return res.json({
+      res.json({
         success: true,
         message: "Login successful",
         token,
       });
     } else {
-      return res.json({ success: false, message: "Invalid credentials" });
+      res.json({ success: false, message: "Invalid credentials" });
     }
   } catch (error) {
     console.error("Error:", error);
@@ -107,4 +108,14 @@ const loginAdmin = async (req, res) => {
   }
 };
 
-export { addDoctor, loginAdmin };
+const allDoctor = async (req, res) => {
+  try {
+    const doctors = await doctorModel.find({}).select("-password");
+    res.json({ success: true, doctors });
+  } catch (error) {
+    console.error("Error:", error);
+    res.status(500).json({ success: false, message: "Internal server error" });
+  }
+};
+
+export { allDoctor, addDoctor, loginAdmin };

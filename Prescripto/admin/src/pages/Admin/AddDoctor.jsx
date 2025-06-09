@@ -17,7 +17,7 @@ const AddDoctor = () => {
   const [address1, setAddress1] = useState("");
   const [address2, setAddress2] = useState("");
 
-  const { aToken, backendUrl } = useContext(AdminContext);
+  const { backendUrl, aToken } = useContext(AdminContext);
 
   const onSubmitHandler = async (event) => {
     event.preventDefault();
@@ -141,15 +141,15 @@ const AddDoctor = () => {
                 id=""
               >
                 <option value="1 Years">1 Year</option>
-                <option value="2 Years">2 Year</option>
-                <option value="3 Years">3 Year</option>
-                <option value="4 Years">4 Year</option>
-                <option value="5 Years">5 Year</option>
-                <option value="6 Years">6 Year</option>
-                <option value="7 Years">7 Year</option>
-                <option value="8 Years">8 Year</option>
-                <option value="9 Years">9 Year</option>
-                <option value="10 Years">10 Year</option>
+                <option value="2 Years">2 Years</option>
+                <option value="3 Years">3 Years</option>
+                <option value="4 Years">4 Years</option>
+                <option value="5 Years">5 Years</option>
+                <option value="6 Years">6 Years</option>
+                <option value="7 Years">7 Years</option>
+                <option value="8 Years">8 Years</option>
+                <option value="9 Years">9 Years</option>
+                <option value="10 Years">10 Years</option>
               </select>
             </div>
             <div className="flex-1 flex flex-col gap-1">
